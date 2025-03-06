@@ -1,0 +1,26 @@
+services:
+  api:
+    container_name: shape-up-api
+    build:
+      context: ../backend
+    command: poetry run python -m src.main
+    restart: on-failure
+    volumes:
+      - ./../backend/src:/var/www/shape-up/src
+    environment:
+      DB_HOST: postgres
+    ports:
+      - "8010:8000"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16
+    container_name: shape-up-postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./postgres/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+    environment:
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "shape_up"
