@@ -1,9 +1,10 @@
 from typing import List
 
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models import DietFood
-from infrastructure.repositories.diet_repository import diet_repository
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import DietFood
+from src.infrastructure.repositories.diet_repository import diet_repository
 
 
 class GetDietFoodsUseCase(BaseUseCase[List[DietFood]]):

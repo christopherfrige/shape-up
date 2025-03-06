@@ -1,0 +1,946 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-03-06T12:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v10.3.1",
+  "resources": [
+    {
+      "_id": "wrk_1",
+      "parentId": null,
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "ShapeUp API",
+      "description": "ShapeUp Fitness and Nutrition Tracking API",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_1",
+      "parentId": "wrk_1",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Base Environment",
+      "data": {
+        "baseUrl": "http://localhost:8000/api/v1"
+      }
+    },
+    {
+      "_id": "fld_1",
+      "parentId": "wrk_1",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Auth",
+      "description": "Authentication endpoints",
+      "scope": "collection",
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_1",
+      "parentId": "fld_1",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Register",
+      "description": "Register a new user",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "POST",
+        "path": "/auth/register",
+        "url": "{{baseUrl}}/auth/register",
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"email\": \"user@example.com\",\n  \"full_name\": \"John Doe\",\n  \"age\": 30,\n  \"weight\": 75.5,\n  \"height\": 180.0,\n  \"gender\": \"MALE\",\n  \"activity_level\": \"MODERATELY_ACTIVE\",\n  \"password\": \"password123\"\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_2",
+      "parentId": "fld_1",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Login",
+      "description": "Login to get access token",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "POST",
+        "path": "/auth/login",
+        "url": "{{baseUrl}}/auth/login",
+        "body": {
+          "mimeType": "application/x-www-form-urlencoded",
+          "params": [
+            {
+              "name": "username",
+              "value": "user@example.com"
+            },
+            {
+              "name": "password",
+              "value": "password123"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "_id": "req_3",
+      "parentId": "fld_1",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Get Current User",
+      "description": "Get current authenticated user",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/auth/me",
+        "url": "{{baseUrl}}/auth/me",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "fld_2",
+      "parentId": "wrk_1",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Exercises",
+      "description": "Exercise management endpoints",
+      "scope": "collection",
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_4",
+      "parentId": "fld_2",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Create Exercise",
+      "description": "Create a new exercise",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "POST",
+        "path": "/exercises",
+        "url": "{{baseUrl}}/exercises",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"name\": \"Bench Press\",\n  \"description\": \"Classic chest exercise\",\n  \"category\": \"STRENGTH\",\n  \"muscle_groups\": \"chest, shoulders, triceps\",\n  \"equipment_needed\": \"barbell, bench\",\n  \"difficulty_level\": 3\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_5",
+      "parentId": "fld_2",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "List Exercises",
+      "description": "Get all exercises",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/exercises",
+        "url": "{{baseUrl}}/exercises",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_6",
+      "parentId": "fld_2",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Get Exercise",
+      "description": "Get a specific exercise",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/exercises/{{exercise_id}}",
+        "url": "{{baseUrl}}/exercises/{{exercise_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_7",
+      "parentId": "fld_2",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Update Exercise",
+      "description": "Update an exercise",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "PUT",
+        "path": "/exercises/{{exercise_id}}",
+        "url": "{{baseUrl}}/exercises/{{exercise_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"name\": \"Updated Bench Press\",\n  \"description\": \"Updated description\",\n  \"difficulty_level\": 4\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_8",
+      "parentId": "fld_2",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Delete Exercise",
+      "description": "Delete an exercise",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "DELETE",
+        "path": "/exercises/{{exercise_id}}",
+        "url": "{{baseUrl}}/exercises/{{exercise_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "fld_3",
+      "parentId": "wrk_1",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Foods",
+      "description": "Food management endpoints",
+      "scope": "collection",
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_9",
+      "parentId": "fld_3",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Create Food",
+      "description": "Create a new food item",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "POST",
+        "path": "/foods",
+        "url": "{{baseUrl}}/foods",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"name\": \"Chicken Breast\",\n  \"category\": \"PROTEIN\",\n  \"calories_per_serving\": 165,\n  \"proteins\": 31,\n  \"carbohydrates\": 0,\n  \"fats\": 3.6,\n  \"serving_size\": 100,\n  \"serving_unit\": \"g\"\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_10",
+      "parentId": "fld_3",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "List Foods",
+      "description": "Get all foods",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/foods",
+        "url": "{{baseUrl}}/foods",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_11",
+      "parentId": "fld_3",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Get Food",
+      "description": "Get a specific food",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/foods/{{food_id}}",
+        "url": "{{baseUrl}}/foods/{{food_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_12",
+      "parentId": "fld_3",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Update Food",
+      "description": "Update a food item",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "PUT",
+        "path": "/foods/{{food_id}}",
+        "url": "{{baseUrl}}/foods/{{food_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"name\": \"Updated Chicken Breast\",\n  \"calories_per_serving\": 170,\n  \"proteins\": 32\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_13",
+      "parentId": "fld_3",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Delete Food",
+      "description": "Delete a food item",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "DELETE",
+        "path": "/foods/{{food_id}}",
+        "url": "{{baseUrl}}/foods/{{food_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "fld_4",
+      "parentId": "wrk_1",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Diets",
+      "description": "Diet management endpoints",
+      "scope": "collection",
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_14",
+      "parentId": "fld_4",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Create Diet",
+      "description": "Create a new diet",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "POST",
+        "path": "/diets",
+        "url": "{{baseUrl}}/diets",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"name\": \"Weight Loss Diet\",\n  \"description\": \"High protein, low carb diet\",\n  \"daily_calories\": 2000\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_15",
+      "parentId": "fld_4",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Get Diet",
+      "description": "Get a specific diet",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/diets/{{diet_id}}",
+        "url": "{{baseUrl}}/diets/{{diet_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_16",
+      "parentId": "fld_4",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Update Diet",
+      "description": "Update a diet",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "PUT",
+        "path": "/diets/{{diet_id}}",
+        "url": "{{baseUrl}}/diets/{{diet_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"name\": \"Updated Diet\",\n  \"daily_calories\": 1800\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_17",
+      "parentId": "fld_4",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Delete Diet",
+      "description": "Delete a diet",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "DELETE",
+        "path": "/diets/{{diet_id}}",
+        "url": "{{baseUrl}}/diets/{{diet_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "fld_5",
+      "parentId": "wrk_1",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Meal Plans",
+      "description": "Meal plan management endpoints",
+      "scope": "collection",
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_18",
+      "parentId": "fld_5",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Create Meal Plan",
+      "description": "Create a new meal plan",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "POST",
+        "path": "/meal-plans",
+        "url": "{{baseUrl}}/meal-plans",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"day_of_week\": 1,\n  \"meal_type\": \"BREAKFAST\"\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_19",
+      "parentId": "fld_5",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "List Meal Plans",
+      "description": "Get all meal plans",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/meal-plans",
+        "url": "{{baseUrl}}/meal-plans",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_20",
+      "parentId": "fld_5",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Get Meal Plan",
+      "description": "Get a specific meal plan",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/meal-plans/{{meal_plan_id}}",
+        "url": "{{baseUrl}}/meal-plans/{{meal_plan_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_21",
+      "parentId": "fld_5",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Update Meal Plan",
+      "description": "Update a meal plan",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "PUT",
+        "path": "/meal-plans/{{meal_plan_id}}",
+        "url": "{{baseUrl}}/meal-plans/{{meal_plan_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"day_of_week\": 2,\n  \"meal_type\": \"LUNCH\"\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_22",
+      "parentId": "fld_5",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Delete Meal Plan",
+      "description": "Delete a meal plan",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "DELETE",
+        "path": "/meal-plans/{{meal_plan_id}}",
+        "url": "{{baseUrl}}/meal-plans/{{meal_plan_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "fld_6",
+      "parentId": "wrk_1",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Progress",
+      "description": "Progress tracking endpoints",
+      "scope": "collection",
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_23",
+      "parentId": "fld_6",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Create Progress",
+      "description": "Create a new progress entry",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "POST",
+        "path": "/progress",
+        "url": "{{baseUrl}}/progress",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"weight\": 75.5,\n  \"body_fat_percentage\": 15.5,\n  \"chest_circumference\": 100,\n  \"waist_circumference\": 80,\n  \"hip_circumference\": 95,\n  \"bicep_circumference\": 35,\n  \"thigh_circumference\": 55,\n  \"notes\": \"Monthly progress check\"\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_24",
+      "parentId": "fld_6",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "List Progress",
+      "description": "Get all progress entries",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/progress",
+        "url": "{{baseUrl}}/progress",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_25",
+      "parentId": "fld_6",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Get Progress",
+      "description": "Get a specific progress entry",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/progress/{{progress_id}}",
+        "url": "{{baseUrl}}/progress/{{progress_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_26",
+      "parentId": "fld_6",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Update Progress",
+      "description": "Update a progress entry",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "PUT",
+        "path": "/progress/{{progress_id}}",
+        "url": "{{baseUrl}}/progress/{{progress_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"weight\": 75.0,\n  \"body_fat_percentage\": 15.0,\n  \"notes\": \"Updated progress check\"\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_27",
+      "parentId": "fld_6",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Delete Progress",
+      "description": "Delete a progress entry",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "DELETE",
+        "path": "/progress/{{progress_id}}",
+        "url": "{{baseUrl}}/progress/{{progress_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "fld_7",
+      "parentId": "wrk_1",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Workout Plans",
+      "description": "Workout plan management endpoints",
+      "scope": "collection",
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_28",
+      "parentId": "fld_7",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Create Workout Plan",
+      "description": "Create a new workout plan",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "POST",
+        "path": "/workout-plans",
+        "url": "{{baseUrl}}/workout-plans",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"name\": \"Upper Body Workout\",\n  \"description\": \"Focus on chest and back\",\n  \"difficulty_level\": 3,\n  \"estimated_duration\": 60,\n  \"exercises\": [\n    {\n      \"exercise_id\": 1,\n      \"sets\": 3,\n      \"reps\": 12,\n      \"weight\": 60,\n      \"rest_time\": 60,\n      \"notes\": \"Warm up set\",\n      \"order\": 1\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_29",
+      "parentId": "fld_7",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "List Workout Plans",
+      "description": "Get all workout plans",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/workout-plans",
+        "url": "{{baseUrl}}/workout-plans",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_30",
+      "parentId": "fld_7",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Get Workout Plan",
+      "description": "Get a specific workout plan",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/workout-plans/{{workout_plan_id}}",
+        "url": "{{baseUrl}}/workout-plans/{{workout_plan_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_31",
+      "parentId": "fld_7",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Update Workout Plan",
+      "description": "Update a workout plan",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "PUT",
+        "path": "/workout-plans/{{workout_plan_id}}",
+        "url": "{{baseUrl}}/workout-plans/{{workout_plan_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"name\": \"Updated Upper Body Workout\",\n  \"difficulty_level\": 4,\n  \"estimated_duration\": 75\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_32",
+      "parentId": "fld_7",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Delete Workout Plan",
+      "description": "Delete a workout plan",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "DELETE",
+        "path": "/workout-plans/{{workout_plan_id}}",
+        "url": "{{baseUrl}}/workout-plans/{{workout_plan_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "fld_8",
+      "parentId": "wrk_1",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Workout Sessions",
+      "description": "Workout session management endpoints",
+      "scope": "collection",
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_33",
+      "parentId": "fld_8",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Create Workout Session",
+      "description": "Create a new workout session",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "POST",
+        "path": "/workout-sessions",
+        "url": "{{baseUrl}}/workout-sessions",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"workout_plan_id\": 1,\n  \"notes\": \"Morning workout\",\n  \"rating\": 4,\n  \"exercise_sets\": [\n    {\n      \"exercise_id\": 1,\n      \"set_number\": 1,\n      \"reps\": 12,\n      \"weight\": 60,\n      \"duration\": 30,\n      \"notes\": \"Warm up set\"\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_34",
+      "parentId": "fld_8",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "List Workout Sessions",
+      "description": "Get all workout sessions",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/workout-sessions",
+        "url": "{{baseUrl}}/workout-sessions",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_35",
+      "parentId": "fld_8",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Get Workout Session",
+      "description": "Get a specific workout session",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "GET",
+        "path": "/workout-sessions/{{workout_session_id}}",
+        "url": "{{baseUrl}}/workout-sessions/{{workout_session_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    },
+    {
+      "_id": "req_36",
+      "parentId": "fld_8",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Update Workout Session",
+      "description": "Update a workout session",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "PUT",
+        "path": "/workout-sessions/{{workout_session_id}}",
+        "url": "{{baseUrl}}/workout-sessions/{{workout_session_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\n  \"end_time\": \"2024-03-06T10:00:00Z\",\n  \"duration\": 65,\n  \"notes\": \"Updated notes\",\n  \"rating\": 5\n}"
+        }
+      }
+    },
+    {
+      "_id": "req_37",
+      "parentId": "fld_8",
+      "modified": 1709733600000,
+      "created": 1709733600000,
+      "name": "Delete Workout Session",
+      "description": "Delete a workout session",
+      "scope": "collection",
+      "_type": "request",
+      "data": {
+        "method": "DELETE",
+        "path": "/workout-sessions/{{workout_session_id}}",
+        "url": "{{baseUrl}}/workout-sessions/{{workout_session_id}}",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    }
+  ]
+} 

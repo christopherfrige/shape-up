@@ -1,8 +1,9 @@
 from typing import List
 
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models.food import Food
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import Food
 
 
 class ListFoodsUseCase(BaseUseCase):

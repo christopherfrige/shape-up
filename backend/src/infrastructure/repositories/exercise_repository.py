@@ -1,9 +1,9 @@
 from typing import List, Optional
 
-from domain.models import Exercise, ExerciseCategory
-from infrastructure.repositories.base_repository import BaseRepository
-from sqlalchemy import or_
 from sqlalchemy.orm import Session
+
+from src.domain.models import Exercise, ExerciseCategory
+from src.infrastructure.repositories.base_repository import BaseRepository
 
 
 class ExerciseRepository(BaseRepository[Exercise]):
@@ -14,11 +14,7 @@ class ExerciseRepository(BaseRepository[Exercise]):
         self, db: Session, category: ExerciseCategory, skip: int = 0, limit: int = 100
     ) -> List[Exercise]:
         return (
-            db.query(Exercise)
-            .filter(Exercise.category == category)
-            .offset(skip)
-            .limit(limit)
-            .all()
+            db.query(Exercise).filter(Exercise.category == category).offset(skip).limit(limit).all()
         )
 
     def search_by_name(

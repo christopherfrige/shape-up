@@ -1,9 +1,10 @@
 from typing import Optional
 
-from domain.models import User
-from infrastructure.auth import get_password_hash
-from infrastructure.repositories.base_repository import BaseRepository
 from sqlalchemy.orm import Session
+
+from src.domain.models import User
+from src.infrastructure.auth import get_password_hash
+from src.infrastructure.repositories.base_repository import BaseRepository
 
 
 class UserRepository(BaseRepository[User]):

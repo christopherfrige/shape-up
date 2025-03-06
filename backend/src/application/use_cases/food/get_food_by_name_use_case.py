@@ -1,9 +1,10 @@
 from typing import Optional
 
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models import Food
-from infrastructure.repositories.food_repository import food_repository
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import Food
+from src.infrastructure.repositories.food_repository import food_repository
 
 
 class GetFoodByNameUseCase(BaseUseCase[Optional[Food]]):

@@ -1,9 +1,10 @@
 from typing import Optional
 
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models import Progress
-from infrastructure.repositories.progress_repository import progress_repository
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import Progress
+from src.infrastructure.repositories.progress_repository import progress_repository
 
 
 class GetLatestProgressUseCase(BaseUseCase[Optional[Progress]]):

@@ -1,9 +1,10 @@
 from datetime import datetime, timedelta
 from typing import Optional
 
-from domain.schemas import TokenData
 from jose import JWTError, jwt
 from passlib.context import CryptContext
+
+from src.domain.schemas import TokenData
 
 SECRET_KEY = "your-secret-key-here"  # Move to environment variables
 ALGORITHM = "HS256"

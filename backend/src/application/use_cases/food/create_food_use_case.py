@@ -1,7 +1,8 @@
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models.food import Food
-from domain.schemas import FoodCreate
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import Food
+from src.domain.schemas import FoodCreate
 
 
 class CreateFoodUseCase(BaseUseCase):

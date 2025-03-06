@@ -1,19 +1,20 @@
 from typing import List
 
-from application.use_cases.progress.create_progress_use_case import (
+from fastapi import APIRouter, Depends, HTTPException, Query
+
+from src.application.use_cases.progress.create_progress_use_case import (
     CreateProgressUseCase,
 )
-from application.use_cases.progress.delete_progress_use_case import (
+from src.application.use_cases.progress.delete_progress_use_case import (
     DeleteProgressUseCase,
 )
-from application.use_cases.progress.get_progress_use_case import GetProgressUseCase
-from application.use_cases.progress.list_progress_use_case import ListProgressUseCase
-from application.use_cases.progress.update_progress_use_case import (
+from src.application.use_cases.progress.get_progress_use_case import GetProgressUseCase
+from src.application.use_cases.progress.list_progress_use_case import ListProgressUseCase
+from src.application.use_cases.progress.update_progress_use_case import (
     UpdateProgressUseCase,
 )
-from domain.schemas import Progress, ProgressCreate, ProgressUpdate
-from fastapi import APIRouter, Depends, HTTPException, Query
-from infrastructure.database.manager import UnitOfWork
+from src.domain.schemas import Progress, ProgressCreate, ProgressUpdate
+from src.infrastructure.database.manager import UnitOfWork
 
 router = APIRouter()
 

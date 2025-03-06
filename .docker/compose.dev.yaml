@@ -3,7 +3,7 @@ services:
     container_name: shape-up-api
     build:
       context: ../backend
-    command: poetry run python -m src.main
+    command: poetry run python -m src.presentation.api.main
     restart: on-failure
     volumes:
       - ./../backend/src:/var/www/shape-up/src

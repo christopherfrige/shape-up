@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "A fitness and nutrition tracking application"
 authors = ["Your Name <your.email@example.com>"]
 readme = "README.md"
-packages = [{include = "src"}]
 package-mode = false
 
 [tool.poetry.dependencies]
@@ -13,7 +12,7 @@ fastapi = "^0.109.2"
 uvicorn = "^0.27.1"
 sqlalchemy = "^2.0.27"
 psycopg2-binary = "^2.9.9"
-pydantic = "^2.6.1"
+pydantic = {extras = ["email"], version = "^2.10.6"}
 pydantic-settings = "^2.1.0"
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
@@ -22,24 +21,23 @@ alembic = "^1.13.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
-black = "^24.1.1"
-isort = "^5.13.2"
 ruff = "^0.2.1"
-mypy = "^1.8.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
-line-length = 88
+line-length = 100
 target-version = "py311"
 
 [tool.ruff.lint]
-select = [
-    "I",
-    "RUF",
-]
+extend-select = ["I"]
+
+[tool.ruff.lint.per-file-ignores]
+"*.py" = ["E712"]
+"__init__.py" = ["F403", "F401"] # https://www.flake8rules.com/rules/F403.html
+"conftest.py" = ["F401"]
 
 [tool.ruff.format]
 quote-style = "double"

@@ -1,9 +1,10 @@
 from typing import Optional
 
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models import Diet
-from infrastructure.repositories.diet_repository import diet_repository
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import Diet
+from src.infrastructure.repositories.diet_repository import diet_repository
 
 
 class GetDietUseCase(BaseUseCase[Optional[Diet]]):

@@ -1,14 +1,14 @@
 from typing import List
 
-from application.use_cases.workout.plan.create_plan_use_case import CreatePlanUseCase
-from application.use_cases.workout.plan.delete_plan_use_case import DeletePlanUseCase
-from application.use_cases.workout.plan.get_plan_use_case import GetPlanUseCase
-from application.use_cases.workout.plan.list_plans_use_case import ListPlansUseCase
-from application.use_cases.workout.plan.update_plan_use_case import UpdatePlanUseCase
-from domain.schemas import WorkoutPlan, WorkoutPlanCreate, WorkoutPlanUpdate
 from fastapi import APIRouter, Depends, HTTPException, Query
-from infrastructure.database.manager import UnitOfWork
-from sqlalchemy.orm import Session
+
+from src.application.use_cases.workout.plan.create_plan_use_case import CreatePlanUseCase
+from src.application.use_cases.workout.plan.delete_plan_use_case import DeletePlanUseCase
+from src.application.use_cases.workout.plan.get_plan_use_case import GetPlanUseCase
+from src.application.use_cases.workout.plan.list_plans_use_case import ListPlansUseCase
+from src.application.use_cases.workout.plan.update_plan_use_case import UpdatePlanUseCase
+from src.domain.schemas import WorkoutPlan, WorkoutPlanCreate, WorkoutPlanUpdate
+from src.infrastructure.database.manager import UnitOfWork
 
 router = APIRouter()
 

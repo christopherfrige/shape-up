@@ -1,10 +1,10 @@
 from typing import Optional
 
-from application.services.calories import calculate_bmr
-from application.use_cases.base_use_case import BaseUseCase
-from application.use_cases.user_use_case import GetUserUseCase
-from domain.models import Gender
 from sqlalchemy.orm import Session
+
+from src.application.services.calories import calculate_bmr
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.application.use_cases.user_use_case import GetUserUseCase
 
 
 class CalculateBMRUseCase(BaseUseCase[Optional[float]]):

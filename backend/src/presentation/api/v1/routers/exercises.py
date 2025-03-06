@@ -1,23 +1,24 @@
 from typing import List
 
-from application.use_cases.exercise.create_exercise_use_case import (
+from fastapi import APIRouter, Depends, HTTPException, Query
+
+from src.application.use_cases.exercise.create_exercise_use_case import (
     CreateExerciseUseCase,
 )
-from application.use_cases.exercise.delete_exercise_use_case import (
+from src.application.use_cases.exercise.delete_exercise_use_case import (
     DeleteExerciseUseCase,
 )
-from application.use_cases.exercise.get_exercise_use_case import (
+from src.application.use_cases.exercise.get_exercise_use_case import (
     GetExerciseUseCase,
 )
-from application.use_cases.exercise.list_exercises_use_case import (
+from src.application.use_cases.exercise.list_exercises_use_case import (
     ListExercisesUseCase,
 )
-from application.use_cases.exercise.update_exercise_use_case import (
+from src.application.use_cases.exercise.update_exercise_use_case import (
     UpdateExerciseUseCase,
 )
-from domain.schemas import Exercise, ExerciseCreate, ExerciseUpdate
-from fastapi import APIRouter, Depends, HTTPException, Query
-from infrastructure.database.manager import UnitOfWork
+from src.domain.schemas import Exercise, ExerciseCreate, ExerciseUpdate
+from src.infrastructure.database.manager import UnitOfWork
 
 router = APIRouter()
 

@@ -1,25 +1,18 @@
-from typing import List, Optional
+from typing import List
 
-from domain.models import Diet, DietFood, Food, MealFood, MealPlan
-from infrastructure.repositories.base_repository import BaseRepository
 from sqlalchemy.orm import Session
+
+from src.domain.models import Diet, DietFood, MealFood, MealPlan
+from src.infrastructure.repositories.base_repository import BaseRepository
 
 
 class DietRepository(BaseRepository[Diet]):
     def get_by_user(
         self, db: Session, *, user_id: int, skip: int = 0, limit: int = 100
     ) -> List[Diet]:
-        return (
-            db.query(Diet)
-            .filter(Diet.user_id == user_id)
-            .offset(skip)
-            .limit(limit)
-            .all()
-        )
+        return db.query(Diet).filter(Diet.user_id == user_id).offset(skip).limit(limit).all()
 
-    def add_food(
-        self, db: Session, *, diet_id: int, food_id: int, quantity: float
-    ) -> DietFood:
+    def add_food(self, db: Session, *, diet_id: int, food_id: int, quantity: float) -> DietFood:
         db_obj = DietFood(diet_id=diet_id, food_id=food_id, quantity=quantity)
         db.add(db_obj)
         db.commit()

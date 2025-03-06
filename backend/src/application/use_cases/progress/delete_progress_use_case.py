@@ -1,8 +1,7 @@
-from typing import Optional
-
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models.progress import Progress
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import Progress
 
 
 class DeleteProgressUseCase(BaseUseCase):
@@ -10,9 +9,7 @@ class DeleteProgressUseCase(BaseUseCase):
         super().__init__(session)
 
     def execute(self, progress_id: int) -> bool:
-        db_progress = (
-            self.session.query(Progress).filter(Progress.id == progress_id).first()
-        )
+        db_progress = self.session.query(Progress).filter(Progress.id == progress_id).first()
         if not db_progress:
             return False
 

@@ -1,10 +1,11 @@
 from datetime import datetime
 from typing import List, Optional
 
-from domain.models import ExerciseSet, WorkoutSession
-from infrastructure.repositories.base_repository import BaseRepository
 from sqlalchemy import desc
 from sqlalchemy.orm import Session
+
+from src.domain.models import ExerciseSet, WorkoutSession
+from src.infrastructure.repositories.base_repository import BaseRepository
 
 
 class WorkoutSessionRepository(BaseRepository[WorkoutSession]):
@@ -71,9 +72,7 @@ class WorkoutSessionRepository(BaseRepository[WorkoutSession]):
             return None
 
         session.end_time = datetime.utcnow()
-        session.duration = int(
-            (session.end_time - session.start_time).total_seconds() / 60
-        )
+        session.duration = int((session.end_time - session.start_time).total_seconds() / 60)
         if notes is not None:
             session.notes = notes
         if rating is not None:
@@ -83,9 +82,7 @@ class WorkoutSessionRepository(BaseRepository[WorkoutSession]):
         db.refresh(session)
         return session
 
-    def get_recent_sessions(
-        self, db: Session, user_id: int, days: int = 7
-    ) -> List[WorkoutSession]:
+    def get_recent_sessions(self, db: Session, user_id: int, days: int = 7) -> List[WorkoutSession]:
         start_date = datetime.utcnow() - datetime.timedelta(days=days)
         return (
             db.query(WorkoutSession)

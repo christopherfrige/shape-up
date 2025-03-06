@@ -1,7 +1,8 @@
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models.progress import Progress
-from domain.schemas import ProgressCreate
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import Progress
+from src.domain.schemas import ProgressCreate
 
 
 class CreateProgressUseCase(BaseUseCase):

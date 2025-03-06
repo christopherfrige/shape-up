@@ -1,7 +1,8 @@
-from domain.models import Exercise
-from domain.schemas import ExerciseCreate
-from infrastructure.repositories.exercise_repository import ExerciseRepository
 from sqlalchemy.orm import Session
+
+from src.domain.models import Exercise
+from src.domain.schemas import ExerciseCreate
+from src.infrastructure.repositories.exercise_repository import ExerciseRepository
 
 
 class CreateExerciseUseCase:

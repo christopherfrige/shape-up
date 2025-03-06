@@ -1,10 +1,11 @@
 from datetime import datetime
 from typing import List, Optional
 
-from domain.models import Progress
-from infrastructure.repositories.base_repository import BaseRepository
 from sqlalchemy import desc
 from sqlalchemy.orm import Session
+
+from src.domain.models import Progress
+from src.infrastructure.repositories.base_repository import BaseRepository
 
 
 class ProgressRepository(BaseRepository[Progress]):

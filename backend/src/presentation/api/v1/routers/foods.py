@@ -1,14 +1,14 @@
 from typing import List
 
-from application.use_cases.food.create_food_use_case import CreateFoodUseCase
-from application.use_cases.food.delete_food_use_case import DeleteFoodUseCase
-from application.use_cases.food.get_food_use_case import GetFoodUseCase
-from application.use_cases.food.list_foods_use_case import ListFoodsUseCase
-from application.use_cases.food.update_food_use_case import UpdateFoodUseCase
-from domain.schemas import Food, FoodCreate, FoodUpdate
 from fastapi import APIRouter, Depends, HTTPException, Query
-from infrastructure.database.manager import UnitOfWork
-from sqlalchemy.orm import Session
+
+from src.application.use_cases.food.create_food_use_case import CreateFoodUseCase
+from src.application.use_cases.food.delete_food_use_case import DeleteFoodUseCase
+from src.application.use_cases.food.get_food_use_case import GetFoodUseCase
+from src.application.use_cases.food.list_foods_use_case import ListFoodsUseCase
+from src.application.use_cases.food.update_food_use_case import UpdateFoodUseCase
+from src.domain.schemas import Food, FoodCreate, FoodUpdate
+from src.infrastructure.database.manager import UnitOfWork
 
 router = APIRouter()
 

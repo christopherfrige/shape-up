@@ -1,9 +1,10 @@
 from typing import Optional
 
-from application.services.calories import calculate_calorie_goal
-from application.use_cases.base_use_case import BaseUseCase
-from application.use_cases.calories.calculate_tdee_use_case import CalculateTDEEUseCase
 from sqlalchemy.orm import Session
+
+from src.application.services.calories import calculate_calorie_goal
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.application.use_cases.calories.calculate_tdee_use_case import CalculateTDEEUseCase
 
 
 class CalculateCalorieGoalUseCase(BaseUseCase[Optional[float]]):

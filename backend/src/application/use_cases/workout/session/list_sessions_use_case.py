@@ -1,8 +1,9 @@
 from typing import List
 
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models.workout_session import WorkoutSession
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import WorkoutSession
 
 
 class ListSessionsUseCase(BaseUseCase):

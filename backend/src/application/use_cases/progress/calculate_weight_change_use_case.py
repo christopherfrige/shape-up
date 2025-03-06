@@ -1,9 +1,10 @@
 from datetime import datetime
 from typing import Optional
 
-from application.use_cases.base_use_case import BaseUseCase
-from infrastructure.repositories.progress_repository import progress_repository
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.infrastructure.repositories.progress_repository import progress_repository
 
 
 class CalculateWeightChangeUseCase(BaseUseCase[Optional[float]]):

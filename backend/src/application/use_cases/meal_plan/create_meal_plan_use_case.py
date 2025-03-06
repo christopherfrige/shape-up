@@ -1,7 +1,8 @@
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models.meal_plan import MealPlan
-from domain.schemas import MealPlanCreate
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import MealPlan
+from src.domain.schemas import MealPlanCreate
 
 
 class CreateMealPlanUseCase(BaseUseCase):

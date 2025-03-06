@@ -5,10 +5,10 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     # Database settings
-    db_driver: str = "postgresql"
+    db_driver: str = "postgresql+psycopg2"
     db_user: str = "postgres"
     db_password: str = "password"
-    db_host: str = "localhost"
+    db_host: str = "postgres"
     db_port: str = "5432"
     db_name: str = "shape_up"
 

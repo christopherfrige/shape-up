@@ -1,15 +1,16 @@
 from datetime import timedelta
 
-from application.use_cases.auth.authenticate_user_use_case import (
-    AuthenticateUserUseCase,
-)
-from application.use_cases.auth.get_current_user_use_case import GetCurrentUserUseCase
-from application.use_cases.user.create_user_use_case import CreateUserUseCase
-from domain.schemas import Token, User, UserCreate
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from infrastructure.auth import ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token
-from infrastructure.database.manager import UnitOfWork
+
+from src.application.use_cases.auth.authenticate_user_use_case import (
+    AuthenticateUserUseCase,
+)
+from src.application.use_cases.auth.get_current_user_use_case import GetCurrentUserUseCase
+from src.application.use_cases.user.create_user_use_case import CreateUserUseCase
+from src.domain.schemas import Token, User, UserCreate
+from src.infrastructure.auth import ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token
+from src.infrastructure.database.manager import UnitOfWork
 
 router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
@@ -45,9 +46,7 @@ def login(
 
 
 @router.get("/me", response_model=User)
-def read_users_me(
-    token: str = Depends(oauth2_scheme), uow: UnitOfWork = Depends(UnitOfWork)
-):
+def read_users_me(token: str = Depends(oauth2_scheme), uow: UnitOfWork = Depends(UnitOfWork)):
     with uow.get_session() as session:
         use_case = GetCurrentUserUseCase(session)
         user = use_case.execute(token)

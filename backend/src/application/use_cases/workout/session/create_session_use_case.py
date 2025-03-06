@@ -1,7 +1,8 @@
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models.workout_session import WorkoutSession
-from domain.schemas import WorkoutSessionCreate
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import WorkoutSession
+from src.domain.schemas import WorkoutSessionCreate
 
 
 class CreateSessionUseCase(BaseUseCase):

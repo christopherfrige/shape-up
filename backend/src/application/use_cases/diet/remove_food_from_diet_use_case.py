@@ -1,6 +1,7 @@
-from application.use_cases.base_use_case import BaseUseCase
-from infrastructure.repositories.diet_repository import diet_repository
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.infrastructure.repositories.diet_repository import diet_repository
 
 
 class RemoveFoodFromDietUseCase(BaseUseCase[bool]):
@@ -9,6 +10,4 @@ class RemoveFoodFromDietUseCase(BaseUseCase[bool]):
         self.diet_repository = diet_repository
 
     def execute(self, diet_id: int, food_id: int) -> bool:
-        return self.diet_repository.remove_food(
-            self.db, diet_id=diet_id, food_id=food_id
-        )
+        return self.diet_repository.remove_food(self.db, diet_id=diet_id, food_id=food_id)

@@ -136,6 +136,11 @@ class MealPlanCreate(MealPlanBase):
     pass
 
 
+class MealPlanUpdate(BaseModel):
+    day_of_week: Optional[int] = Field(None, ge=0, le=6)
+    meal_type: Optional[str] = None
+
+
 class MealPlan(MealPlanBase):
     id: int
     diet_id: int

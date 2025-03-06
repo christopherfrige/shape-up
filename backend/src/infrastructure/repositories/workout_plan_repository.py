@@ -1,8 +1,9 @@
 from typing import List, Optional
 
-from domain.models import WorkoutExercise, WorkoutPlan
-from infrastructure.repositories.base_repository import BaseRepository
 from sqlalchemy.orm import Session
+
+from src.domain.models import WorkoutExercise, WorkoutPlan
+from src.infrastructure.repositories.base_repository import BaseRepository
 
 
 class WorkoutPlanRepository(BaseRepository[WorkoutPlan]):
@@ -54,9 +55,7 @@ class WorkoutPlanRepository(BaseRepository[WorkoutPlan]):
         db.refresh(workout_exercise)
         return workout_exercise
 
-    def remove_exercise(
-        self, db: Session, workout_plan_id: int, exercise_id: int
-    ) -> bool:
+    def remove_exercise(self, db: Session, workout_plan_id: int, exercise_id: int) -> bool:
         workout_exercise = (
             db.query(WorkoutExercise)
             .filter(

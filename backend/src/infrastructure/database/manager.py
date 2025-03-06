@@ -3,7 +3,7 @@ from contextlib import contextmanager
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
 
-from infrastructure.config import SETTINGS
+from src.infrastructure.config import SETTINGS
 
 
 class UnitOfWork:
@@ -25,6 +25,6 @@ class UnitOfWork:
             session.close()
 
     def create_tables(self):
-        from domain.models import Base
+        from src.domain.models import Base
 
         Base.metadata.create_all(self.engine)

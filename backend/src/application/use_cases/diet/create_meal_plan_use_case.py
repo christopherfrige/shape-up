@@ -1,10 +1,11 @@
 from typing import Optional
 
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models import MealPlan
-from domain.schemas import MealPlanCreate
-from infrastructure.repositories.diet_repository import diet_repository
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import MealPlan
+from src.domain.schemas import MealPlanCreate
+from src.infrastructure.repositories.diet_repository import diet_repository
 
 
 class CreateMealPlanUseCase(BaseUseCase[Optional[MealPlan]]):

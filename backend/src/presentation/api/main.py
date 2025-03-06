@@ -1,8 +1,9 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from infrastructure.config import SETTINGS
-from presentation.api.v1.api import api_router
+
+from src.infrastructure.config import SETTINGS
+from src.presentation.api.v1.api import api_router
 
 app = FastAPI(
     title="ShapeUp API",
@@ -13,7 +14,6 @@ app = FastAPI(
     openapi_url="/api/openapi.json",
 )
 
-# Configure CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -37,7 +37,7 @@ async def root():
 
 if __name__ == "__main__":
     uvicorn.run(
-        "src.main:app",
+        "src.presentation.api.main:app",
         host="0.0.0.0",
         reload=SETTINGS.app_environment == "development",
         port=8000,

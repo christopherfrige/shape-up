@@ -1,22 +1,22 @@
 from typing import List
 
-from application.use_cases.meal_plan.create_meal_plan_use_case import (
+from fastapi import APIRouter, Depends, HTTPException, Query
+
+from src.application.use_cases.meal_plan.create_meal_plan_use_case import (
     CreateMealPlanUseCase,
 )
-from application.use_cases.meal_plan.delete_meal_plan_use_case import (
+from src.application.use_cases.meal_plan.delete_meal_plan_use_case import (
     DeleteMealPlanUseCase,
 )
-from application.use_cases.meal_plan.get_meal_plan_use_case import GetMealPlanUseCase
-from application.use_cases.meal_plan.list_meal_plans_use_case import (
+from src.application.use_cases.meal_plan.get_meal_plan_use_case import GetMealPlanUseCase
+from src.application.use_cases.meal_plan.list_meal_plans_use_case import (
     ListMealPlansUseCase,
 )
-from application.use_cases.meal_plan.update_meal_plan_use_case import (
+from src.application.use_cases.meal_plan.update_meal_plan_use_case import (
     UpdateMealPlanUseCase,
 )
-from domain.schemas import MealPlan, MealPlanCreate, MealPlanUpdate
-from fastapi import APIRouter, Depends, HTTPException, Query
-from infrastructure.database.manager import UnitOfWork
-from sqlalchemy.orm import Session
+from src.domain.schemas import MealPlan, MealPlanCreate, MealPlanUpdate
+from src.infrastructure.database.manager import UnitOfWork
 
 router = APIRouter()
 

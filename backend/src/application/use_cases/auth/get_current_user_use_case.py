@@ -1,10 +1,11 @@
 from typing import Optional
 
-from application.use_cases.base_use_case import BaseUseCase
-from application.use_cases.user.get_user_by_email_use_case import GetUserByEmailUseCase
-from domain.models import User
-from infrastructure.auth import decode_token
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.application.use_cases.user.get_user_by_email_use_case import GetUserByEmailUseCase
+from src.domain.models import User
+from src.infrastructure.auth import decode_token
 
 
 class GetCurrentUserUseCase(BaseUseCase[Optional[User]]):

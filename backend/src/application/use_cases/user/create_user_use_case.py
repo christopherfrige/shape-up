@@ -1,8 +1,9 @@
-from application.use_cases.base_use_case import BaseUseCase
-from domain.models import User
-from domain.schemas import UserCreate
-from infrastructure.repositories.user_repository import user_repository
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.domain.models import User
+from src.domain.schemas import UserCreate
+from src.infrastructure.repositories.user_repository import user_repository
 
 
 class CreateUserUseCase(BaseUseCase[User]):

@@ -1,22 +1,22 @@
 from typing import List
 
-from application.use_cases.workout.session.create_session_use_case import (
+from fastapi import APIRouter, Depends, HTTPException, Query
+
+from src.application.use_cases.workout.session.create_session_use_case import (
     CreateSessionUseCase,
 )
-from application.use_cases.workout.session.delete_session_use_case import (
+from src.application.use_cases.workout.session.delete_session_use_case import (
     DeleteSessionUseCase,
 )
-from application.use_cases.workout.session.get_session_use_case import GetSessionUseCase
-from application.use_cases.workout.session.list_sessions_use_case import (
+from src.application.use_cases.workout.session.get_session_use_case import GetSessionUseCase
+from src.application.use_cases.workout.session.list_sessions_use_case import (
     ListSessionsUseCase,
 )
-from application.use_cases.workout.session.update_session_use_case import (
+from src.application.use_cases.workout.session.update_session_use_case import (
     UpdateSessionUseCase,
 )
-from domain.schemas import WorkoutSession, WorkoutSessionCreate, WorkoutSessionUpdate
-from fastapi import APIRouter, Depends, HTTPException, Query
-from infrastructure.database.manager import UnitOfWork
-from sqlalchemy.orm import Session
+from src.domain.schemas import WorkoutSession, WorkoutSessionCreate, WorkoutSessionUpdate
+from src.infrastructure.database.manager import UnitOfWork
 
 router = APIRouter()
 

@@ -1,11 +1,12 @@
 from typing import Optional
 
-from application.use_cases.base_use_case import BaseUseCase
-from application.use_cases.food.get_food_use_case import GetFoodUseCase
-from domain.models import DietFood
-from domain.schemas import DietFoodCreate
-from infrastructure.repositories.diet_repository import diet_repository
 from sqlalchemy.orm import Session
+
+from src.application.use_cases.base_use_case import BaseUseCase
+from src.application.use_cases.food.get_food_use_case import GetFoodUseCase
+from src.domain.models import DietFood
+from src.domain.schemas import DietFoodCreate
+from src.infrastructure.repositories.diet_repository import diet_repository
 
 
 class AddFoodToDietUseCase(BaseUseCase[Optional[DietFood]]):
